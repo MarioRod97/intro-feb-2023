@@ -1,16 +1,38 @@
 ﻿using Finger;
+using Marten;
 
-var Builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
-var app = Builder.Build();
+var connectionString = "host=localhost;database=status_dev;password=TokyoJoe138!;username=postgres;port=5432";
 
-app.MapGet("/status", () =>{
-    var status = new StatusMessage("All is good!", DateTimeOffset.Now);
-    return status;
+builder.Services.AddMarten(options =>
+{
+    options.Connection(connectionString);
+    if (builder.Environment.IsDevelopment())
+    {
+        options.AutoCreateSchemaObjects = Weasel.Core.AutoCreate.All;
+    }
 });
 
-app.MapPost("/status", (StatusRequest req) =>{
-    return req;
+var app = builder.Build();
+
+app.MapGet("/status", async (IDocumentSession doc) => {
+    var results = await doc.Query<StatusMessage>()
+        .OrderByDescending(m => m.When)
+        .FirstOrDefaultAsync();
+    
+    if (results != null) {
+        return Results.Ok(results);
+    } else {
+        return Results.NotFound();
+    }
+});
+
+app.MapPost("/status", async (StatusRequest req, IDocumentSession doc) => {
+    var messageToSave = new StatusMessage(Guid.NewGuid(), req.Message, DateTimeOffset.Now);
+    doc.Store<StatusMessage>(messageToSave);
+    await doc.SaveChangesAsync();
+    return messageToSave;
 });
 
 app.Run();
