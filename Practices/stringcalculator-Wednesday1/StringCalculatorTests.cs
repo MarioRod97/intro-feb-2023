@@ -58,4 +58,16 @@ public class StringCalculatorTests
 
         Assert.Equal(expected, result);
     }
+
+    [Theory]
+    [InlineData("//;\n1;2", 3)]
+    [InlineData("//*;\n8*2,1\n1", 12)]
+    public void StringWithDifferentDelimiterReturnsSum(string numbers, int expected)
+    {
+        var calculator = new StringCalculator();
+
+        var result = calculator.Add(numbers);
+
+        Assert.Equal(expected, result);
+    }
 }
