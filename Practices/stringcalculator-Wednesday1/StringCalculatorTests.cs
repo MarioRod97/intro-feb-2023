@@ -47,4 +47,15 @@ public class StringCalculatorTests
 
         Assert.Equal(expected, result);
     }
+
+    [Theory]
+    [InlineData("1,2,3,4,5,6,7,8,9\n1,2", 48)]
+    public void StringWithNewLineDelimiterReturnsSum(string numbers, int expected)
+    {
+        var calculator = new StringCalculator();
+
+        var result = calculator.Add(numbers);
+
+        Assert.Equal(expected, result);
+    }
 }

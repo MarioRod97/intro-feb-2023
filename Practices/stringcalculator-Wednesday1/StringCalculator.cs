@@ -6,7 +6,7 @@ public class StringCalculator
 
     public int Add(string numbers)
     {
-        string[] numbersArray = numbers.Split(',');
+        string[] numbersArray = numbers.Replace('\n', ',').Split(',');
         int numbersSum = 0;
 
         if (String.IsNullOrEmpty(numbers)) return 0;
