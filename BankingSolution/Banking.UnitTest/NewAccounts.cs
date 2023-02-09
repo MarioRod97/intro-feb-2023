@@ -1,10 +1,8 @@
 ﻿using Banking.Domain;
-
 namespace Banking.UnitTests;
 
 public class NewAccounts
 {
-
     [Fact]
     public void NewAccountsHaveTheCorrectOpeningBalance()
     {

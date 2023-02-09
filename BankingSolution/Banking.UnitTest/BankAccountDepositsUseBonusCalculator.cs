@@ -9,9 +9,9 @@ public class BankAccountDepositsUseTheBonusCalculator
         var account = new BankAccount(stubbedBonusCalculator.Object);
         var openingBalance = account.GetBalance();
         var amountToDeposit = 118.32M;
-        //stubbedBonusCalculator.Setup(calculator =>
-        //       calculator.GetDepositBonusFor(openingBalance, amountToDeposit)
-        //).Returns(42.18M) ;
+        stubbedBonusCalculator.Setup(calculator =>
+               calculator.GetDepositBonusFor(openingBalance, amountToDeposit)
+        ).Returns(42.18M);
 
 
         // When
