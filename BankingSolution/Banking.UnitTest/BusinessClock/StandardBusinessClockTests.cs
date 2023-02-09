@@ -7,7 +7,7 @@ public class StandardBusinessClockTests
     public void DuringBusinessHoursReturnsTrue()
     {
         var stubbedClock = new Mock<ISystemTime>();
-        stubbedClock.Setup(c => c.GetCurrent().Returns(new DateTime(1969, 04, 20, 9, 00, 01));
+        stubbedClock.Setup(c => c.GetCurrent()).Returns(new DateTime(1969, 04, 20, 9, 00, 01));
         IProvideTheBusinessClock clock = new StandardBusinessClock(stubbedClock.Object);
 
         Assert.True(clock.IsDuringBusinessHours());
@@ -17,7 +17,7 @@ public class StandardBusinessClockTests
     public void AfterBusinessHoursFalse()
     {
         var stubbedClock = new Mock<ISystemTime>();
-        stubbedClock.Setup(c => c.GetCurrent().Returns(new DateTime(1969, 04, 20, 16, 00, 00));
+        stubbedClock.Setup(c => c.GetCurrent()).Returns(new DateTime(1969, 04, 20, 16, 00, 00));
         IProvideTheBusinessClock clock = new StandardBusinessClock(stubbedClock.Object);
 
         Assert.False(clock.IsDuringBusinessHours());

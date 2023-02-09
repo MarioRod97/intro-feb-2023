@@ -14,14 +14,14 @@ public class StandardBonusCalculatorOutsideBusinessHours
     [Fact]
     public void UnderCutoffGetNoBonus()
     {
-        var bonus = calculator.GetDepositBonusFor(4999.99M, 100); 
+        var bonus = _calculator.GetDepositBonusFor(4999.99M, 100); 
         Assert.Equal(0, bonus);
     }
 
     [Fact]
     public void AtCutOffGetsNoBonus()
     {
-        var bonus = calculator.GetDepositBonusFor(5000M, 100);
+        var bonus = _calculator.GetDepositBonusFor(5000M, 100);
         Assert.Equal(10, bonus);
     }
 }
