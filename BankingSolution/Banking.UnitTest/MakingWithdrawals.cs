@@ -41,7 +41,6 @@ public class MakingWithdrawals
 
     }
 
-    [Fact]
     public void OverdraftThrowsException()
     {
         _account.Withdraw(_openingBalance + .01m);

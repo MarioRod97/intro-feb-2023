@@ -5,8 +5,7 @@ public class GoldCustomersGetBonusOnDeposits
     [Fact]
     public void BonusAppliedToDeposit()
     {
-        var account = new BankAccount();
-        account.Level = LoyaltyLevel.Gold;
+        var account = new GoldBankAccount();
         var openingBalance = account.GetBalance();
         var amountToDeposit = 100m;
 
