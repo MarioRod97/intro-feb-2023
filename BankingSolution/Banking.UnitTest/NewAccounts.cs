@@ -1,18 +1,20 @@
 ﻿using Banking.Domain;
-namespace Banking.UnitTest;
+
+namespace Banking.UnitTests;
 
 public class NewAccounts
 {
+
     [Fact]
     public void NewAccountsHaveTheCorrectOpeningBalance()
     {
-        // Given: brand new account exists
-        var newAccount = new BankAccount(new DummyBonusCalculator());
+        // Given I have a brand new bank account
+        var account = new BankAccount(new Mock<ICanCalculateAccountBonuses>().Object);
 
-        // Ask account for balance
-        decimal accountBalance = newAccount.GetBalance();
+        // When I ask that account for it's balance
+        decimal openingBalance = account.GetBalance();
 
-        // Check balance is $5,000
-        Assert.Equal(5000, accountBalance);
+        // then it has a balance of $5,000.00
+        Assert.Equal(5000M, openingBalance);
     }
 }

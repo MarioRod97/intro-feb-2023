@@ -1,5 +1,4 @@
 ﻿namespace Banking.UnitTests;
-
 public class MakingWithdrawals
 {
     private BankAccount _account;
@@ -26,25 +25,27 @@ public class MakingWithdrawals
     public void OverdraftIsNotAllowedBalanceStaysTheSame()
     {
         var amountToWithdraw = _openingBalance + .01M;
-        
         try
         {
-            _account.Withdraw(amountToWithdraw);
+            _account.Withdraw(amountToWithdraw); // sus!
         }
-        catch (Exception)
+        catch (AccountOverdraftException)
         {
-
-            // throw new exception
+            // was expecting that... carry on. 
         }
-        
         Assert.Equal(_openingBalance, _account.GetBalance());
 
     }
 
+    [Fact]
     public void OverdraftThrowsException()
     {
-        _account.Withdraw(_openingBalance + .01m);
+        Assert.Throws<AccountOverdraftException>(() =>
+             _account.Withdraw(_openingBalance + .01M)
+             );
+
     }
+
 
     [Fact]
     public void CanTakeEntireBalance()
