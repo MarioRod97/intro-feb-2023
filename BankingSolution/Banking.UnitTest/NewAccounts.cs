@@ -7,7 +7,7 @@ public class NewAccounts
     public void NewAccountsHaveTheCorrectOpeningBalance()
     {
         // Given: brand new account exists
-        var newAccount = new BankAccount();
+        var newAccount = new BankAccount(new DummyBonusCalculator());
 
         // Ask account for balance
         decimal accountBalance = newAccount.GetBalance();

@@ -7,7 +7,7 @@ public class MakingDeposits
     [Fact]
     public void DepositingMoneyIncreasesTheBalance()
     {
-        var bankAccount = new BankAccount();
+        var bankAccount = new BankAccount(new DummyBonusCalculator());
         var openingBalance = bankAccount.GetBalance();
         decimal amountToDeposit = 1000m;
 
