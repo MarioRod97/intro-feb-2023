@@ -19,6 +19,14 @@ public class BankAccount
         _balance += amountToDeposit + bonus;
     }
 
+    private static void GuardNoNegativeAmountsForTransactions(decimal amountToDeposit)
+    {
+        if (amountToDeposit < 0)
+        {
+            throw new NoNegativeNumbersException();
+        }
+    }
+
     public decimal GetBalance()
     {
         return _balance;
