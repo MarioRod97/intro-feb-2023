@@ -1,6 +1,8 @@
 ﻿using LearningResourcesApi.Controllers;
 using LearningResourcesApi.Services;
+using LearningResourcesAPI.IntegrationTest;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.VisualStudio.TestPlatform.TestHost;
 using Moq;
 
 namespace LearningResourcesApi.IntegrationTests;

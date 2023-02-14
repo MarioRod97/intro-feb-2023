@@ -5,18 +5,27 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { AboutComponent } from './components/about/about.component';
+import { HttpClientModule } from '@angular/common/http';
+import { StatusDataService } from './services/status-data.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShoppingListComponent
+    ShoppingListComponent,
+    DashboardComponent,
+    NavigationComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule // -> Has a service it provided call the HttpClient
   ],
-  providers: [],
+  providers: [StatusDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
