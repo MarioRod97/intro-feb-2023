@@ -14,6 +14,9 @@ import { CounterComponent } from './components/counter/counter.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CounterPrefsComponent } from './components/counter-prefs/counter-prefs.component';
+import { EffectsModule } from '@ngrx/effects';
+import { CounterEffects } from './state/effects/counter.effects';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     DashboardComponent,
     AboutComponent,
     NavigationComponent,
-    CounterComponent
+    CounterComponent,
+    CounterPrefsComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     ReactiveFormsModule,
     HttpClientModule,// -> Has a service it provided call the HttpClient
     StoreModule.forRoot(reducers),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([CounterEffects])
   ],
   providers: [StatusDataService], // API -> builder.Services.AddSingleton
   bootstrap: [AppComponent]
