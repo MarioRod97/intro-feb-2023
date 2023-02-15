@@ -1,14 +1,9 @@
 version: "3"
 services:
   sql-server:
-    image: mcr.microsoft.com/mssql/server:2022-lates
-    volumes:
-      - sql-data:/var/opt/mssql/data
+    image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
-      - ACCEPT_EULA = Y
-      - SA_PASSWORD = TokyoJoe138!
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=TokyoJoe138!
     ports:
       - 1433:1433
-    
-volumes:
-  sql-data: 

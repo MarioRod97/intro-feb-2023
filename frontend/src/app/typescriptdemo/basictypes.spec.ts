@@ -1,49 +1,33 @@
 describe('Declaring Variables in TypeScript', () => {
-
     describe('Explicity Typed Variables', () => {
-
         it('defining types', () => {
             let myName: string | number; // Union Type
 
             myName = "Jeff";
 
             expect(typeof myName).toEqual("string");
-
             expect(myName).toEqual("Jeff");
 
             myName = 1138;
 
             expect(typeof myName).toEqual("number");
-
-
-
-            // expect(typeof myName).toEqual("function");
         });
 
         it('implicity defined types', () => {
-
             // when you initialize a type, it can infer the data type.
             let age = 53;
             let oldEnough = true;
 
-
             let name: string | number = 'Jeff';
 
             name = 'Sue';
-
             name = 1138;
-
-
-
         });
-
     });
 
     describe('custom types', () => {
-
         it('can use types', () => {
             // type alias
-
             type ThingWithLettersAndSTuff = string;
 
             let myName: ThingWithLettersAndSTuff = 'Bob';
@@ -59,6 +43,7 @@ describe('Declaring Variables in TypeScript', () => {
                 price: 8.99,
                 description: 'Some Product'
             }
+
             let p3: SummaryProduct2 = {
                 price: 8.99,
                 description: 'Stuff',
@@ -79,7 +64,6 @@ describe('Declaring Variables in TypeScript', () => {
 
             expect(thisClass.numberOfDays).toEqual(10);
             expect(thisClass.title).toEqual('Intro to Programming');
-
             expect(thisClass.getInfo()).toEqual('This course is Intro to Programming and is 10 days long');
 
             let someClass: Course;
@@ -94,34 +78,26 @@ describe('Declaring Variables in TypeScript', () => {
     });
 
     describe('some literals', () => {
-
         it('string literals', () => {
             let name: string;
 
             name = "Jeff";
             expect(name).toEqual('Jeff');
 
-
             name = `Henry`;
-
             expect(name).toEqual('Henry');
             expect(name).toEqual("Henry");
 
             name = `
                 you can do multline strings!
-
                 Like this
-            
             `;
 
-
             let age = 11;
-
             name = 'Henry';
 
             expect(`The name is ${name} and he is ${age} years old`).toEqual('The name is Henry and he is 11 years old');
         });
-
     });
 });
 
@@ -136,7 +112,6 @@ type Product = {
 type SummaryProduct = Pick<Product, 'price' | 'description'>;
 
 type SummaryProduct2 = Omit<Product, 'sku'>;
-
 
 interface Customer {
     name: string;

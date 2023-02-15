@@ -6,7 +6,7 @@
                id="item"
                formControlName="item">
         <button type="submit"
-                class="btn btn-primary">Submit an item</button>
+                class="btn btn-primary">Add Item</button>
     </form>
 </section>
 <section>
@@ -19,8 +19,9 @@
                     *ngIf="item.purchased === false"
                     class="btn btn-danger">X</button>
         </li>
+
     </ul>
     <button [disabled]="!hasPurchasedItems"
-            (click)="clearPurchased"
-            class="btn btn-danger">Clear out purchased items</button>
+            (click)="clearPurchased()"
+            class="btn btn-danger">Clear out Purchased Items</button>
 </section>
