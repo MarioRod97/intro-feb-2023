@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ItemCreate } from '../../state/actions/items.actions';
+import { Store } from '@ngrx/store';
+import { ItemCreate, itemsEvents } from '../../state/actions/items.actions';
 import { ItemType } from '../../state/reducers/items.reducers';
 
 @Component({
@@ -9,6 +10,8 @@ import { ItemType } from '../../state/reducers/items.reducers';
   styleUrls: ['./new.component.css']
 })
 export class NewComponent {
+
+  constructor(private store: Store) { }
   options = ['Book', 'Video', 'Blog', 'Tutorial', 'Other'];
 
   form = new FormGroup<ItemCreateForm>({
@@ -37,6 +40,8 @@ export class NewComponent {
   addItem(foci: HTMLInputElement) {
     if (this.form.valid) {
       // dispatch our action!
+      const payload = this.form.value as ItemCreate;
+      this.store.dispatch(itemsEvents.created({ payload }))
       this.form.reset();
       foci.focus();
 

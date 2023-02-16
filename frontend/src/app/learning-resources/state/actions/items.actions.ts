@@ -4,7 +4,7 @@ import { ItemEntity } from "../reducers/items.reducers";
 export const itemsEvents = createActionGroup({
     source: 'Items Events',
     events: {
-        created: props<{ payload: ItemCreate }>(),
+        created: props<{ payload: ItemCreate }>(), // form
     }
 })
 
@@ -12,7 +12,8 @@ export const itemsEvents = createActionGroup({
 export const itemsDocuments = createActionGroup({
     source: 'Items Documents',
     events: {
-        items: props<{ payload: ItemEntity[] }>()
+        items: props<{ payload: ItemEntity[] }>(),
+        item: props<{ payload: ItemEntity }>() // our effect is going to turn the created action into by calling the api.
     }
 })
 
