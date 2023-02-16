@@ -1,5 +1,5 @@
-using LearningResourcesApi.Adapters;
 using LearningResourcesApi.Services;
+using LearningResourcesAPI.Adapters;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 

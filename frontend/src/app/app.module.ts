@@ -18,8 +18,7 @@ import { CounterPrefsComponent } from './components/counter-prefs/counter-prefs.
 import { EffectsModule } from '@ngrx/effects';
 import { CounterEffects } from './state/effects/counter.effects';
 import { ApplicationEffects } from './state/effects/app.effects';
-import { LearningResourcesComponent } from './learning-resources/learning-resources.component';
-import { ListComponent } from './learning-resources/components/list/list.component';
+
 
 @NgModule({
   declarations: [
@@ -29,20 +28,18 @@ import { ListComponent } from './learning-resources/components/list/list.compone
     AboutComponent,
     NavigationComponent,
     CounterComponent,
-    CounterPrefsComponent,
-    LearningResourcesComponent,
-    ListComponent
+    CounterPrefsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,// -> Has a service it provided call the HttpClient
+    HttpClientModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([CounterEffects, ApplicationEffects])
   ],
-  providers: [StatusDataService], // API -> builder.Services.AddSingleton
+  providers: [StatusDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

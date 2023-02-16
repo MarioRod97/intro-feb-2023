@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ListComponent } from './components/list/list.component';
 import { NewComponent } from './components/new/new.component';
+import { StoreModule } from '@ngrx/store';
+import { featureName, reducers } from './state'
 
 
 const routes: Routes = [
@@ -41,7 +43,8 @@ const routes: Routes = [
     ],
     imports: [
         CommonModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+        StoreModule.forFeature(featureName, reducers)
     ]
 })
 export class LearningResourcesModule { }

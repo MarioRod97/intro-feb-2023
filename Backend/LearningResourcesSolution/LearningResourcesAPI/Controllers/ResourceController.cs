@@ -1,5 +1,5 @@
-﻿using LearningResourcesApi.Adapters;
-using LearningResourcesApi.Models;
+﻿using LearningResourcesApi.Models;
+using LearningResourcesAPI.Adapters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
