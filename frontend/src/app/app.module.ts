@@ -17,6 +17,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CounterPrefsComponent } from './components/counter-prefs/counter-prefs.component';
 import { EffectsModule } from '@ngrx/effects';
 import { CounterEffects } from './state/effects/counter.effects';
+import { ApplicationEffects } from './state/effects/app.effects';
+import { LearningResourcesComponent } from './learning-resources/learning-resources.component';
+import { ListComponent } from './learning-resources/components/list/list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { CounterEffects } from './state/effects/counter.effects';
     AboutComponent,
     NavigationComponent,
     CounterComponent,
-    CounterPrefsComponent
+    CounterPrefsComponent,
+    LearningResourcesComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,7 @@ import { CounterEffects } from './state/effects/counter.effects';
     HttpClientModule,// -> Has a service it provided call the HttpClient
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),
-    EffectsModule.forRoot([CounterEffects])
+    EffectsModule.forRoot([CounterEffects, ApplicationEffects])
   ],
   providers: [StatusDataService], // API -> builder.Services.AddSingleton
   bootstrap: [AppComponent]
