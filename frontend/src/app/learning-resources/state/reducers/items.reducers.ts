@@ -9,6 +9,7 @@ export interface ItemEntity {
     link: string;
 }
 
+
 export type ItemType = 'Book' | 'Video' | 'Blog' | 'Tutorial' | 'Other';
 export interface ItemState extends EntityState<ItemEntity> {
 
@@ -20,5 +21,5 @@ const initialState = adapter.getInitialState();
 
 export const reducer = createReducer(
     initialState,
-    on(itemsDocuments.items, (s, a) => adapter.setAll(a.payload, s))
+    on(itemsDocuments.items, (s, a) => adapter.setAll(a.payload, s)) // adds the data to the state. It is in memory now!
 );

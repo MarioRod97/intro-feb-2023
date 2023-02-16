@@ -19,7 +19,8 @@ const initialState: CounterState = {
 // this function gets a read-only copy of the current state, and any actions that have been dispatched
 // and it can return a new state.
 
-export const reducer = createReducer(initialState,
+export const reducer = createReducer(
+    initialState,
     on(counterEvents.countIncremented, (currentState) => ({ ...currentState, current: currentState.current + currentState.by })),
     on(counterEvents.countDecremented, (s) => ({ ...s, current: s.current - s.by })),
     on(counterEvents.countReset, (s) => ({ ...s, current: 0 })),

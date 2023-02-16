@@ -3,7 +3,9 @@ import { ItemEntity } from "../reducers/items.reducers";
 
 export const itemsEvents = createActionGroup({
     source: 'Items Events',
-    events: {}
+    events: {
+        created: props<{ payload: ItemCreate }>(),
+    }
 })
 
 
@@ -13,3 +15,5 @@ export const itemsDocuments = createActionGroup({
         items: props<{ payload: ItemEntity[] }>()
     }
 })
+
+export type ItemCreate = Omit<ItemEntity, 'id'>;

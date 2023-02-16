@@ -13,7 +13,7 @@ export class ItemsEffects {
     loadItemsOnFeatureEntered$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(learingResourcesEvents.entered),
-            switchMap(() => this.client.get<{ items: ItemEntity[] }>('http://localhost:1337/resources')
+            switchMap(() => this.client.get<ItemResponseFromServer>('http://localhost:1337/resources')
                 .pipe(
                     map(response => response.items), // { items: []} => []
                     map(payload => itemsDocuments.items({ payload }))
@@ -24,4 +24,8 @@ export class ItemsEffects {
     })
 
     constructor(private actions$: Actions, private client: HttpClient) { }
+}
+
+type ItemResponseFromServer = {
+    items: ItemEntity[]
 }
