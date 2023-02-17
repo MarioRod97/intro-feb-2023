@@ -12,7 +12,6 @@ public class StatusController : ControllerBase
         _systemTime = systemTime;
     }
 
-
     // GET /status
     [HttpGet("/status")]
     public ActionResult<GetStatusResponse> GetTheStatus()

@@ -1,4 +1,4 @@
-﻿namespace LearningResourcesAPI.Domain;
+﻿namespace LearningResourcesApi.Domain;
 
 public class LearningItem
 {
@@ -8,4 +8,4 @@ public class LearningItem
     public LearningItemType Type { get; set; } = LearningItemType.Video;
 }
 
-public enum LearningItemType { Book, Video, Blog, Tutorial, Others}
+public enum LearningItemType { Book, Video, Blog, Tutorial, Other }s

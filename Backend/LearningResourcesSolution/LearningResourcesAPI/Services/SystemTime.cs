@@ -1,12 +1,9 @@
 ﻿namespace LearningResourcesApi.Services;
 
-public class SystemTime : ISystemTime
+public class SystemTime : ISystemTime // implementation.
 {
     public DateTimeOffset GetCurrent() => DateTimeOffset.Now;
 }
 
 
-public interface ISystemTime
-{
-    DateTimeOffset GetCurrent();
-}
+public interface ISystemTime { } // job description
